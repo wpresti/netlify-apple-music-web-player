@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <meta charset=utf-8>
+  <link rel="shortcut icon" href="#" />
+  <title>Apple Music Web Player</title>
+  <link rel="stylesheet" href="myapp.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel='icon' href='amwp-logo.png' type='image/x-icon'/ >
+</head>
+<body>
+
+
+<div id="overall-grid-container"> 
+  <!--Menu-->
+    <div id="top-bar">
+      <div class = "tab-container">
+        <div class = "button-container">
+          <button id="PlaylistsTab" style="border:hidden;border-width:2px;border-color:lightslategray"> Playlists </button>
+          <button id="ForYouTab" style="border:hidden;border-width:2px;border-color:lightslategray"> For You </button>
+          <button id="AlbumsTab" style="border:hidden;border-width:2px;border-color:lightslategray"> Albums </button>
+          <button id="SongsTab" style="border:hidden;border-width:2px;border-color:lightslategray"> Songs </button>
+        </div>
+
+      </div>
+    </div>
+
+  <!-- Grid container will hold all the cells-->
+  <!-- <div class = "grid-container"> --><!-- Grid container begin-->
+
+  <!-- Cell 1-->
+  <!-- <div class = "cell-1"> -->
+
+  <div id="header">
+
+     <h1 id="header-title">Apple Music Web Player</h1>
+
+     <div id="login"></div>
+     <br>
+     <center><button id="login-btn">Login to Apple Music</button></center>
+    <div style="margin:10px">
+      <!-- <label style="color:slategray; padding-right: 10px">Type here</label> -->
+      <input id="mySearch" type="search" value="" placeholder="Search Apple Music catalogue"> 
+    </div>
+      
+  </div>
+  <br>
+
+  <!-- </div> -->
+
+  <!--Menu-->
+  <!-- -Cell 2-->
+  <!-- <div class = "cell-2"> -->
+
+        <!-- menu bar was here HERE-->
+  <!-- </div> -->
+  
+<!--     <center>
+      <label id="input">Type:</label>
+      <input id="type-input" type="text" placeholder="type: album, song" value="album">
+      <label id="input">ID:</label>
+      <input id="id-input" type="text" placeholder="id # of type" value="1462319084">
+      <button id="add-to-q-btn"><i class="fa fa-plus"></i></button> -->
+      <!--
+      <section class="animation-box">
+        <div id="in-q"></div>
+      </section>
+      -->
+    <!-- </center> -->
+
+  <!-- <br> -->
+
+  <!-- -Cell 3 -->
+  <!-- <div class = "cell-3"> -->
+    
+
+  <div id="table-div">
+    <table id="song-table" style="width:100%">
+      <tr id="table-header">
+        <th id="table-song-col" title = "Sort by Song">Song</th>
+        <th id="table-artist-col" title = "Sort by Artist">Artist</th>
+        <th id="table-album-col" title = "Sort by Album">Album</th>
+        <th id="table-time-col" title = "Sort by Time">Time</th>
+        <th>songId</th>
+        <th>songType</th>
+      </tr>
+      
+      <tr id="table-list">
+        <td>insert song name here</td>
+        <td>insert artist name here</td>
+        <td>insert album name here</td>
+        <td>length of song here</td>
+        <td>song id here</td>
+        <td>song type here</td>
+      </tr>
+    
+    </table>
+  </div>
+  
+<!--   <button id="load-btn-plst">Load</button>
+  <select id="playlists">
+    <option>Choose a playlist</option>
+  </select>
+  <button id="load-plst-btn">Load Playlist</button>
+  -
+  <button id="load-btn-song">Load</button>
+  <select id="songs" > 
+      <option>Choose a song</option>
+  </select>
+  <button id="load-songs-btn">Load Song</button>
+  
+  <button id="info-change">Update info</button>
+  <button id="view-change">View change</button> -->
+
+  <!-- list view -->
+<!--   <button id="test-list-btn">Test List</button> -->
+<!--   <div id="list-view">  
+        <ol id="list"style="list-style-type:none; border:solid-thin">
+        </ol>
+  </div>
+ -->
+  <!-- </div> -->
+
+<div id="myModal" class="modal">
+  <div class="modal-content">
+      <span class="close">&times;</span>
+      <div id="modal-title" style="display:none;color:gray"></div>
+          <div class="centered">
+              <div id="table-right-div">
+                  <button id = "play-all-button" style="display:none">Play all songs</button>
+                  <table id="song-table-right" style="width:100%">
+                      <tr id="table-header">
+
+                          <th id="table-song-col" title = "Sort by Song">Song</th>
+                          <th id="table-artist-col" title = "Sort by Artist">Artist</th>
+                          <th id="table-album-col" title = "Sort by Album">Album</th>
+                          <th id="table-time-col" title = "Sort by Time">Time</th>
+                          <th>songId</th>
+                          <th>songType</th>
+                      </tr>
+                      <tr id="table-list">
+                          <td>insert song name here</td>
+                          <td>insert artist name here</td>
+                          <td>insert album name here</td>
+                          <td>length of song here</td>
+                          <td>song id here</td>
+                          <td>song type here</td>
+                      </tr>
+                  </table>
+              </div>
+          </div>
+  </div>
+</div>
+
+<!-- Cell 4-->
+<!-- <div class = "cell-4"> -->
+<div id="page-title"></div>
+
+<div class="split-view" id="split-view-id">
+    <div class="split left">
+        <div class="centered">
+            <div id="list-left">
+                <ol id="listPlaylist" style="list-style-type:none;">
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- coverflow -->
+
+<div class='grey-view' id='grey-view-id'>
+  <div class='coverflow-container' id='coverflow-container-id'>
+    <!--
+    <div class='cover'><img
+            src="http://greencloudcomputers.com/wp-content/uploads/2013/03/green-cloud-background-light-150x150.jpg" />
+    </div>
+    <div class='cover'><img
+            src="http://www.feasta.org/wp-content/uploads/2011/07/office_graph_small-e1310388639706-150x150.jpg" />
+    </div>
+    <div class='cover'><img src="http://www.feasta.org/wp-content/uploads/2011/08/daisy-e1314312276993-150x150.jpg" />
+    </div>
+    <div class='cover active'><img src="https://drupal.org/files/images/affiliates-150x150.png" /></div>
+    <div class='cover'><img src="http://www.cafeenseine.ie/wp-content/uploads/2012/09/spooky-graveyardl-150x150.jpg" />
+    </div>
+    <div class='cover'><img
+            src="http://fc00.deviantart.net/fs46/f/2009/230/6/c/Spongebob_14_150x150_PNG_by_somemilk.png" /></div>
+    <div class='cover'><img src="http://www.insomnia.ie/wp-content/uploads/2010/04/esp1-150x150.jpg" /></div>
+
+    <div class='cover'><img
+            src="http://blog.visafirst.com/wp-content/uploads/2013/07/newyorkcity2-300x2253-150x150.jpg" /></div>
+    -->
+  </div>
+</div>
+
+
+
+
+<!-- </div> -->
+
+  <!-- Cell 5-->
+  <!-- <div class = "cell-5"> -->
+  <!--Song Display-->
+  <div id="song-display">
+        <center>
+          <div id="song-img">
+            <img id="art-display" src="amwp-logo.png" width="100px" width="100px"/>
+          </div>
+        </center>
+
+        <!-- <br> -->
+        <!--<div id="border"></div>-->
+        <!--Music Functions-->
+        <div class="loader" id="load"></div>
+        <div id="song-info-display">
+          <p id="music-info">
+            <marquee scrolldelay=400 id="npName"></marquee>
+            <div id="npArtist"></div>
+            <div id="npAlbum"></div>
+          </p>
+        </div>
+    
+        <div id="music-functions">
+            <center>
+            <div class="slidercontainer">
+              <div class="slider" id="slide"><input type="range" min="1" max="100" value="50" id="playbackScrubber"></div>
+              <span id="time"></span>
+            </div>
+            </center>
+
+            <br>
+            <button id="prev-trk-btn"><span style="color: white;"><i class="fa fa-backward"></i></span></button>
+            <button id="playpause-btn"><span style="color: #A9CEF4;"><i class="fa fa-play"></i></span></button>
+            <button id="next-trk-btn"><span style="color: white;"><i class="fa fa-forward"></i></span></button>
+            <div>
+                <button id="replay-btn"><span style="color: white;"><i class="fa fa-refresh"></i></span></button>
+                <button id="q-list-btn"><span style="color: white;"><i class="fa fa-list-ul"></i></span></button>
+                <button id="shuffle-btn"><span style="color: white;"><i class="fa fa-random" aria-hidden="true"></i></span></button>
+            </div>
+        </div>
+
+  </div>
+</div>
+
+  <!-- </div> -->
+
+  <!-- </div> --> <!-- Grid container end-->
+
+  <script src="https://js-cdn.music.apple.com/musickit/v1/musickit.js"></script>
+  <script type="text/javascript" src="/index.js"></script>
+</body>
+</html>
