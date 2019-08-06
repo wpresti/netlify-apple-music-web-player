@@ -2,7 +2,7 @@
 const express = require('express');
 const app = express();
 const hostname = process.env.HOSTNAME || 'localhost';
-const port = parseInt(process.env.PORT, 10) || 8080;
+const port = parseInt(process.env.PORT, 10) || 8080;//8080
 const publicDir = process.argv[2] || __dirname + '/public';
 const path = require('path');
 
@@ -31,6 +31,11 @@ app.get('/token', function (req, res) {
   res.setHeader('Content-Type', 'application/json');
   res.send(JSON.stringify({token: token}));
 });
+
+// app.get('/token', function (req, res) {
+//     res.setHeader('Content-Type', 'application/json');
+//     res.send(JSON.stringify({token: token}));
+//   });
 
 app.use(express.static(publicDir));
 
