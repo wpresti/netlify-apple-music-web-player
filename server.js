@@ -27,15 +27,15 @@ const token = jwt.sign({}, private_key, {
   }
 });
 
-app.get('/token', function (req, res) {
-  res.setHeader('Content-Type', 'application/json');
-  res.send(JSON.stringify({token: token}));
-});
-
-// app.get('/token', function (req, res) {
-//     res.setHeader('Content-Type', 'application/json');
-//     res.send(JSON.stringify({token: token}));
-//   });
+// app.get('/.netlify/functions/token-hider', function (req, res) {///token
+//   res.setHeader('Content-Type', 'application/json');
+//   res.send(JSON.stringify({token: token}));
+// });
+//server side -- running locally on dev server
+app.get('/.netlify/functions/token-hider', function (req, res) {//app.get is orig. app.all is new
+    res.setHeader('Content-Type', 'application/json');
+    res.send(JSON.stringify({token: token}));
+  });
 
 app.use(express.static(publicDir));
 

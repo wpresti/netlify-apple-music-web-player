@@ -6,8 +6,9 @@ window.addEventListener("resize", resizeGrid);
 // listen for MusicKit Loaded callback
 document.addEventListener('musickitloaded', () => {
     console.log("musickit loaded :D")
-    // MusicKit global is now defined
-    fetch('/token').then(response => response.json()).then(res => {
+    // MusicKit global is now defined --old-- /token
+    fetch('/.netlify/functions/token-hider').then(response => response.json()).then(res => {
+        console.log("res",res);
     /***
         Configure our MusicKit instance with the signed token from server, returns a configured MusicKit Instance
         https://developer.apple.com/documentation/musickitjs/musickit/musickitinstance
