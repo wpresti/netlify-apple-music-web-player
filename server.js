@@ -27,7 +27,7 @@ const token = jwt.sign({}, private_key, {
   }
 });
 
-// app.get('/.netlify/functions/token-hider', function (req, res) {///token
+// app.get('/token', function (req, res) {
 //   res.setHeader('Content-Type', 'application/json');
 //   res.send(JSON.stringify({token: token}));
 // });

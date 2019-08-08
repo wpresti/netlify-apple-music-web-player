@@ -23,8 +23,8 @@ exports.handler = function(event, context, callback) {
   //const pkey = "-----BEGIN PRIVATE KEY-----MIGTAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBHkwdwIBAQQgP2D9keR998MsYnTIJQrb8eAa+wbmHnoqMxr+fn162sygCgYIKoZIzj0DAQehRANCAAShnR+a/Etj1L07zUDHAVHf0X4bp4tD9IL/+DNrDgPgiumZIZemQobweK562tP8V9ZUBtioq7bGl+fu6nn28Zme-----END PRIVATE KEY-----";
   //console.log("pkey is: ", pkey);
   const private_key = fs.readFileSync('AuthKey_4MR8KL2MS6.p8').toString();
-  const team_id = '53DNG3Q3GT'; // your 10 character apple team id, found in https://developer.apple.com/account/#/membership/
-  const key_id = '4MR8KL2MS6'; // your 10 character generated music key id. more info https://help.apple.com/developer-account/#/dev646934554
+  const team_id = 'TEAM_ID'; // your 10 character apple team id, found in https://developer.apple.com/account/#/membership/
+  const key_id = 'KEY_ID'; // your 10 character generated music key id. more info https://help.apple.com/developer-account/#/dev646934554
   const token = jwt.sign({}, private_key, {
     algorithm: 'ES256',
     expiresIn: '180d',
@@ -35,12 +35,12 @@ exports.handler = function(event, context, callback) {
     }
   });
   var tString = '{ "token": ' +'"' + token+'"}';
-  console.log("tString: ",tString);
+
   //debug below -- toDelete in production
   var jsonObj = JSON.parse(tString);
   console.log("JSON OBJ:",jsonObj);
   //debug above -- toDelete in production
-  var tokenJson = {"token": token};
+
 
   // Here's a function we'll use to define how our response will look like when we call callback
   const pass = body => {
